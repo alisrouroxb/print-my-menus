@@ -32,10 +32,24 @@ const Index = () => {
         scale: 3,
         useCORS: true,
         backgroundColor: "#ffffff",
+        logging: false,
       });
+
+      const A4_W = 210;
+      const A4_H = 297;
+      const ratio = canvas.width / canvas.height;
+      let imgW = A4_W;
+      let imgH = imgW / ratio;
+      if (imgH > A4_H) {
+        imgH = A4_H;
+        imgW = imgH * ratio;
+      }
+      const xPos = (A4_W - imgW) / 2;
+      const yPos = (A4_H - imgH) / 2;
+
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
-      pdf.addImage(imgData, "PNG", 0, 0, 210, 297);
+      pdf.addImage(imgData, "PNG", xPos, yPos, imgW, imgH);
       pdf.save(`${restaurant.name || "restaurant"}-id-cards.pdf`);
       toast.success("PDF downloaded!");
     } catch {
