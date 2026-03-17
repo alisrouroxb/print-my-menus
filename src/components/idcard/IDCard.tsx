@@ -23,13 +23,13 @@ export function IDCard({ employee, restaurant, template }: Props) {
           {restaurant.logo && (
             <img src={restaurant.logo} alt="" className="w-7 h-7 object-contain rounded-sm bg-primary-foreground/20 p-0.5" />
           )}
-          <span className="text-primary-foreground text-xs font-semibold tracking-wide uppercase truncate">
+          <span className="text-primary-foreground text-base font-semibold tracking-wide uppercase truncate">
             {restaurant.name || "Restaurant"}
           </span>
         </div>
         <div className="flex-1 px-4 py-3 flex flex-col justify-center">
-          <p className="text-base font-semibold text-foreground leading-tight truncate">{employee.name}</p>
-          <p className="text-xs text-muted-foreground mt-1 uppercase tracking-wider">{employee.role}</p>
+          <p className="text-lg font-semibold text-foreground leading-tight truncate">{employee.name}</p>
+          <p className="text-sm text-muted-foreground mt-1 uppercase tracking-wider">{employee.role}</p>
         </div>
         <div className="px-4 pb-2">
           <div className="h-px bg-border" />
